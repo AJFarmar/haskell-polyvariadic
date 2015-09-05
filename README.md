@@ -68,9 +68,9 @@ And that's all! We need to write the type signature so as to constrain the type 
 ""
 ```
 
-## Other methods
+## Notes
 
-### Functional dependencies trick
+### Functional dependencies
 
 We can make our classes much more powerful with multiparameter typeclasses and functional dependencies, for instance, making the class above polymorphic to any list, like so:
 
