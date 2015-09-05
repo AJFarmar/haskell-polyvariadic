@@ -108,6 +108,8 @@ The number of arguments to the function is determined in the splice (The `$( ...
 $(list 5) 'H' 'e' 'l' 'l' 'o'
 ```
 
+Even though we must define the number of arguments explictly, this does have the benefit of not needing explicit type signatures, which is an interesting payoff, but because Haskell supports type inference, I regard the original method as easier.
+
 In these examples, we will not be using Template Haskell, though I encourage you to experiment with it.
 
 More information about Template Haskell can be found [here](https://wiki.haskell.org/Template_Haskell).
