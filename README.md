@@ -67,3 +67,47 @@ And that's all! We need to write the type signature so as to constrain the type 
 λ> str :: String
 ""
 ```
+
+## Other methods
+
+### Functional dependencies trick
+
+We can make our classes much more powerful with multiparameter typeclasses and functional dependencies, for instance, making the class above polymorphic to any list, like so:
+
+```Haskell
+{-# LANGUAGE FlexibleInstances      #-}
+{-# LANGUAGE FunctionalDependencies #-}
+
+class ListReturnType a r | r -> a where
+  retList :: [a] -> r
+
+instance ListReturnType a [a] where
+  retList = id
+  
+instance (ListReturnType a r) => ListReturnType a (a -> r) where
+  retList xs x = retList (xs ++ [x])
+
+list :: (ListReturnType a r) => r
+list = retList []
+```
+
+This can be applied to any datatype with a type variable. Notice the similarity to the original definition.
+
+### Template Haskell method
+
+It's worth mentioning that this can be done similarly with Template Haskell. However, this requires more effort on the users part, because the number of arguments must be explicitly described before the arguments are passed.
+Here is an example of the use of a `printf` function written in Template Haskell:
+
+```Haskell
+$(printf "Hello %s! This is a number: %d") "World" 12
+```
+
+The number of arguments to the function is determined in the splice (The `$( ... )` bit) rather than outside. Where in our `str` or `list` function we can implicitly describe the number of arguments, with Template Haskell, we'd describe it explicitly, something like this:
+
+```Haskell
+$(list 5) 'H' 'e' 'l' 'l' 'o'
+```
+
+In these examples, we will not be using Template Haskell, though I encourage you to experiment with it.
+
+More information about Template Haskell can be found [here](https://wiki.haskell.org/Template_Haskell).
