@@ -1,6 +1,8 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE FunctionalDependencies #-}
 
+module FirstJust where
+
 class FirstReturn a r | r -> a where
   fromMaybe :: Maybe a -> r
 
