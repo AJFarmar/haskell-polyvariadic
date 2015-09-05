@@ -14,3 +14,8 @@ instance (ListReturn a r) => ListReturn a (a -> r) where
 
 list :: (ListReturn a r) => r
 list = fromDifflist id
+
+--  Examples:
+--> list 1 5 7 9 :: [Int]
+--> list 'G' 'H' 'C' 'i' :: String
+--> list [1,2,3] [] [4,5] :: [[Int]] 
