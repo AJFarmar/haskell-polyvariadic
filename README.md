@@ -70,6 +70,8 @@ And that's all! We need to write the type signature so as to constrain the type 
 ""
 ```
 
+More information on making polyvariadic Haskell functions can be found [here](http://okmij.org/ftp/Haskell/polyvariadic.html).
+
 ## Notes
 
 ### Functional dependencies
