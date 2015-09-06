@@ -14,3 +14,8 @@ instance (ConcatReturn a r) => ConcatReturn a ([a] -> r) where
 
 concats :: (ConcatReturn a r) => r
 concats = fromDifflist id
+
+-- Examples:
+--> concats [1,2,3] [] [4,5] [6] :: [Int]
+--> concats "Hello, " "world" "!"
+--> fromDifflist reverse "!" "dlrow" " ,olleH"
