@@ -2,7 +2,9 @@
 Examples of polyvariadic functions in Haskell.
 
 ## What are polyvariadic functions?
-Polyvariadic functions are functions which can take variable numbers of arguments. In most programming languages this is trivial. Take this example in Python:
+Polyvariadic functions are functions which can take variable numbers of arguments, such as C's famous `printf` function, or the list construction function in many languages.
+
+In most programming languages it is trivial to implement polyvariadic functions. Take this example in Python:
 
 ```python
 def sum_args(*all):
